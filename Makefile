@@ -44,9 +44,6 @@ RM = rm -f
 MD	:= mkdir -p
 endif
 
-$(CXX):=C://cygwin64/bin/g++.exe
-
-
 # define any directories containing header files other than /usr/include
 INCLUDES	:= $(patsubst %,-I%, $(INCLUDEDIRS:%/=%))
 
@@ -88,7 +85,7 @@ $(MAIN): $(OBJECTS)
 # -MMD generates dependency output files same name as the .o file
 # (see the gnu make manual section about automatic variables)
 .cpp.o:
-	C://cygwin64/bin/g++.exe $(CXXFLAGS) $(INCLUDES) -c -MMD $<  -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -MMD $<  -o $@
 
 .PHONY: clean
 clean:
